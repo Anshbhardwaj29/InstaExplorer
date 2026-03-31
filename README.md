@@ -29,6 +29,25 @@
 - **Resilient Data Collection**: Python `instaloader` wrapper with an intelligent mockup fallback.
 - **Lightning Fast API**: Powered by FastAPI to serve AI inferences instantaneously.
 
+## 🔄 System Architecture & Workflow
+
+```mermaid
+graph TD;
+    A[User] -->|Inputs Instagram Handle| B(Next.js Dashboard)
+    B -->|API Request/XHR| C{Python FastAPI Backend}
+    C --> D[Instaloader Scraper]
+    D -- Success --> E[Parse Real Metrics]
+    D -- Blocked/Rate Limited --> F[Generate Mock Data]
+    E --> G((XAI Engine))
+    F --> G
+    G -->|Analyzes Post Density| H[Generate Retention Rules]
+    G -->|Extracts Peak Metrics| I[Identify Virality Vectors]
+    H --> J[Final JSON Response]
+    I --> J
+    J -->|Returned to Frontend| B
+    B -->|Renders Visuals| K[Charts & Insights Layout]
+```
+
 ## 🛠️ Tech Stack
 
 **Frontend:**
